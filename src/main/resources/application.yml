@@ -1,0 +1,41 @@
+app.runner.enabled: false
+
+server:
+  port: 8080
+  servlet:
+    context-path: /thsr
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  datasource:
+    url: jdbc:postgresql://localhost:5432/thsr
+    driver-class-name: org.postgresql.Driver
+    username: thsr_owner
+    password: THSR
+
+  jpa:
+    show-sql: true
+    # format SQL語法
+    # properties.hibernate.format_sql: true
+    hibernate:
+      ddl-auto: update
+#    properties.hibernate:
+#      dialect: org.hibernate.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+logging:
+  level:
+    sql: debug
+#    org.hibernate.orm.jdbc.bind: trace
+#    com.euphy.learn.tdx: debug
+
+tdx.token:
+  url: https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token
+  client:
+    id: your clientId
+    secret: your clientSecret
+
+tdx.thsr.url: https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/
